@@ -1,0 +1,26 @@
+{
+  "feature_columns": [
+    "safety_gap",
+    "tools_gap",
+    "theory_gap",
+    "communication_gap",
+    "career_gap",
+    "priority_skill"
+  ],
+  "label_to_index": {
+    "safety": 0,
+    "tools": 1,
+    "theory": 2,
+    "communication": 3,
+    "career": 4
+  },
+  "index_to_label": {
+    "0": "safety",
+    "1": "tools",
+    "2": "theory",
+    "3": "communication",
+    "4": "career"
+  },
+  "num_features": 5,
+  "num_classes": 5
+}
