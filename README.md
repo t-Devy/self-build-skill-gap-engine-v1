@@ -64,3 +64,33 @@ at a time, and just know where data is coming from and where it needs to
 go. It's like you mentally pass it along as you go, and enhancements can
 be made once it's fully constructed and you have clarity about each piece
 you've built. 
+
+Model & Metrics: This metrics section has been the most difficult 
+section to wrap my head around conceptually. 
+Even though these metric concepts were touched in my DataCamp coursework,
+I really had to spend extra cognitive effort to understand how these 
+metrics would be computed, but not so much why, since it is 
+intuitive to measure `correct/total correct`. It turned out that 
+the accuracy helper function was much simpler than I expected, but
+it left me wondering what the use-case for the `torchmetrics.Accuracy`
+would be, if we can easily just build our own helper to use in a loop. 
+I started out trying to use the `torchmetrics` functions since that 
+is what I learned to compute accuracy for multiclass on DataCamp, but
+it brought in complexity that wasn't necessary. When it came to smoke
+testing the metrics functions, I felt like I had to take some steps
+backwards to understand how `logits` and `y` are compared to compute
+the accuracies. Because I didn't want to initiate the model training
+I had to construct arbitrary tensors to test with and produce results
+that would prove the metric function's functionality. This was good 
+exercise because I came to understand how the predictions, `logits`
+are checked for the `argmax` across each row, `dim=1`, and accuracy
+is computed by checking `True` and `False` when the ground truth `y`
+index represents the column with the max value in the logit tensor. 
+I also had to clarify how `unsqueeze(1)` reshapes the `y` tensor so 
+it aligns with each row of the `logit` tensor. 
+I can be proud that these things actually makes sense to me. 
+This also led me to dig further into how accuracy computations 
+align with the error in loss functions, and how gradients 
+are used to adjust the weights going forward. I now have a more intuitive
+understanding of how the loss function is also comparing the `logits` and
+individual ground truth batches `yb` when it comes to the training loop.
