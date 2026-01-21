@@ -15,6 +15,12 @@ class SchemaReport:
     ok: bool
     errors: list[str]
 
+class SchemaValidationError(ValueError):
+    def __init__(self, errors: list[str]):
+        self.errors = errors
+        message = "Schema validation failed:\n" + "\n".join(f" - {err}" for err in errors)
+        super().__init__(message)
+
 
 def _require_columns(df: pd.DataFrame, required: Iterable[str]) -> list[str]:
     missing = [c for c in required if c not in df.columns]
