@@ -9,6 +9,7 @@ RAW_DATA_PATH = DATA_DIR / "skill_gaps.csv"
 ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 META_PATH = ARTIFACTS_DIR / "meta.json"
 REPORT_PATH = ARTIFACTS_DIR / "report.md"
+MODEL_PATH = ARTIFACTS_DIR / "model.pt"
 
 
 

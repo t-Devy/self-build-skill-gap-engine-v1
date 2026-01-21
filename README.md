@@ -94,3 +94,31 @@ align with the error in loss functions, and how gradients
 are used to adjust the weights going forward. I now have a more intuitive
 understanding of how the loss function is also comparing the `logits` and
 individual ground truth batches `yb` when it comes to the training loop.
+I came to understand why the `_accuracy` and `_topk_accuracy` averages
+will be multiplied by the total batch size in the evaluation loop. 
+I also feel really cool using the `git add .` -> `git status` output
+to construct my commit message before pushing. I feel pro.
+
+Train: This file pushed my cognitive limits also, but I liked it. 
+At first, I wanted to separate out the `evaluate()` and `train()` functions
+then call them both in a new function, just for the sake of saying
+I figured out how to separate concerns then reconcile them. This was not
+efficient, and I resorted to just letting `evaluate()` run within the
+training loop. I did get further intuitive understanding of the loss
+and accuracy metric computations. I had to have Claude break down to me
+why we were converting from averages to counts then back to averages
+for the total values in the `train_metrics` and `val_metrics` dictionaries.
+I understand that this is how we make sure the values are weighted
+based on batch size, since later batches become smaller. I also 
+clarified why we use `max(total_examples, 1)` to guard against 0
+division errors. My outputs for the training and evaluation showed 
+perfect predictions which I understand is due to a small dataset, only
+35 samples, and my guess is that only 5 classes makes it easy for a model
+to learn the patterns quickly, (30 epochs). I also confirmed that 
+`topk_accuracy` with `k=1` is the same as computing overall accuracy
+of predicting the top 1 class. I didn't mention earlier that I also
+came to understand `topk_accuracy` is like a leniency measure allowing
+the model 3 predictions to get the ground truth answer. While I did
+strain my mind a little today, I do feel I came away with a much deeper
+understanding of training, and I look forward to even more depth of 
+understanding. 
