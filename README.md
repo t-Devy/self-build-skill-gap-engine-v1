@@ -40,3 +40,27 @@ into a JSON object, which I knew how to store in my `constants.py` file. Lastly,
 updates to a repo, and figured out that if you run `git add .` and skip directly to `git push` without `git commit`,
 the changes won't be pushed. I then went in to see how I would access previous commits if I ever need to see what an 
 original file looked like. 
+
+Loader Build: Today it was very clear why I was pulling my build functions
+from their various files, and I felt so good with understanding how the 
+loader function was bringing all of my generated data objects into one place.
+This is probably the most confident I've felt in understanding object-oriented 
+programming. Especially in determining the best way to catch
+validation errors when bringing `validate_schema()` over to `loaders.py `
+For this Claude recommended building a class that inherits from `ValueError`
+but presents my custom message, made up of the errors list from
+the `validate_schema()` function. It wasn't even a second thought
+why it was a good idea to create a bundle out of the return objects
+for the `make_loaders()` function. This packaging made it easy to iterate
+my loader objects in the smoke test, and access the dictionary with 
+the same loader object. I also learned something about `git push` which is 
+that if you make changes in the browser, as I did yesterday to the README
+file, those changes have to be merged in the IDE with `git pull`, before
+pushing other changes. I learned that best practice is to not make 
+changes in the browser. Something else I intuited is that trying to hold
+all the data objects in your mind at one time is not a valid way to
+build a pipeline. It is easier to focus on a single piece of the pipeline
+at a time, and just know where data is coming from and where it needs to 
+go. It's like you mentally pass it along as you go, and enhancements can
+be made once it's fully constructed and you have clarity about each piece
+you've built. 
